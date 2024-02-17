@@ -1,0 +1,11 @@
+"filename", "language", "CSS", "TypeScript JSX", "TypeScript", "comment", "blank", "total"
+"c:\Users\lstop\OneDrive\Documents\JavaScriptHtmlandCss\JavaScript\Website\weather-app\src\App.tsx", "TypeScript JSX", 0, 9, 0, 0, 3, 12
+"c:\Users\lstop\OneDrive\Documents\JavaScriptHtmlandCss\JavaScript\Website\weather-app\src\Components\GetTemperature\GetTemperature.module.css", "CSS", 21, 0, 0, 0, 3, 24
+"c:\Users\lstop\OneDrive\Documents\JavaScriptHtmlandCss\JavaScript\Website\weather-app\src\Components\GetTemperature\GetTemperature.tsx", "TypeScript JSX", 0, 134, 0, 5, 12, 151
+"c:\Users\lstop\OneDrive\Documents\JavaScriptHtmlandCss\JavaScript\Website\weather-app\src\Components\Loading.tsx", "TypeScript JSX", 0, 9, 0, 0, 1, 10
+"c:\Users\lstop\OneDrive\Documents\JavaScriptHtmlandCss\JavaScript\Website\weather-app\src\Components\WeatherApp\WeatherApp.module.css", "CSS", 17, 0, 0, 0, 1, 18
+"c:\Users\lstop\OneDrive\Documents\JavaScriptHtmlandCss\JavaScript\Website\weather-app\src\Components\WeatherApp\WeatherApp.tsx", "TypeScript JSX", 0, 25, 0, 0, 3, 28
+"c:\Users\lstop\OneDrive\Documents\JavaScriptHtmlandCss\JavaScript\Website\weather-app\src\index.css", "CSS", 8, 0, 0, 0, 1, 9
+"c:\Users\lstop\OneDrive\Documents\JavaScriptHtmlandCss\JavaScript\Website\weather-app\src\main.tsx", "TypeScript JSX", 0, 9, 0, 0, 2, 11
+"c:\Users\lstop\OneDrive\Documents\JavaScriptHtmlandCss\JavaScript\Website\weather-app\src\vite-env.d.ts", "TypeScript", 0, 0, 0, 1, 1, 2
+"Total", "-", 46, 186, 0, 6, 27, 265

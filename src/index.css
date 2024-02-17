@@ -1,0 +1,41 @@
+body {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 0;
+	padding: 0;
+	height: 100vh;
+}
+* {
+	font-family: "IBM Plex Mono", monospace;
+}
+:root {
+	--main-color: hsl(209, 100%, 60%);
+	--light-main-color: hsl(209, 100%, 65%);
+	--dark-main-color: hsl(209, 100%, 50%);
+	--accent-color: hsl(151, 100%, 60%);
+	--light-accent-color: hsl(209, 100%, 65%);
+	--dark-accent-color: hsl(151, 100%, 50%);
+	--light-accent-color: hsl(151, 100%, 65%);
+	--main-gradient-to-top: linear-gradient(
+		to top,
+		var(--main-color),
+		var(--dark-main-color)
+	);
+	--accent-gradient-to-top: linear-gradient(
+		to top,
+		var(--accent-color),
+		var(--dark-accent-color)
+	);
+	--disabled-color: hsl(0, 0%, 65%);
+	--main-shadow-1: hsla(209, 100%, 50%, 0.5);
+	--main-shadow-2: hsla(209, 100%, 50%, 0.4);
+	--main-shadow-3: hsla(209, 100%, 50%, 0.3);
+	--main-shadow-4: hsla(209, 100%, 50%, 0.2);
+	--main-shadow-5: hsla(209, 100%, 50%, 0.1);
+	--accent-shadow-1: hsla(151, 100%, 50%, 0.5);
+	--accent-shadow-2: hsla(151, 100%, 50%, 0.4);
+	--accent-shadow-3: hsla(151, 100%, 50%, 0.3);
+	--accent-shadow-4: hsla(151, 100%, 50%, 0.2);
+	--accent-shadow-5: hsla(151, 100%, 50%, 0.1);
+}

@@ -1,6 +1,6 @@
 import { RefObject, useRef, useState } from "react";
-import { Loading, GettingUserLocation, FetchingData } from "./Loading";
-("./Loading");
+import { Loading, GettingUserLocation, FetchingData } from "../Loading";
+import styles from "./GetTemperature.module.css";
 
 type getWeatherProps = {
 	lat: number;
@@ -105,7 +105,17 @@ function GetTemperature({ inputRef }: GetTemperatureProps) {
 
 	return (
 		<>
-			<div>
+			<button
+				className={`${styles.cityButton} ${styles.button}`}
+				onClick={getCityCoords}>
+				Get Temp
+			</button>
+			<button
+				className={`${styles.userButton} ${styles.button}`}
+				onClick={getUserCoords}>
+				Get My Temp
+			</button>
+			<div className={styles["temp-text"]}>
 				{geoCoding ? (
 					<Loading />
 				) : gettingUserLocation ? (
@@ -116,14 +126,12 @@ function GetTemperature({ inputRef }: GetTemperatureProps) {
 					temp != undefined && temp != null ? (
 						`The temperature in ${fullCityName.current} is ${temp} degrees Celsius`
 					) : (
-						"No temperature found."
+						errorMsg
 					)
 				) : (
 					errorMsg
 				)}
 			</div>
-			<button onClick={getCityCoords}>Get Temp</button>
-			<button onClick={getUserCoords}>Get My Temp</button>
 		</>
 	);
 }

@@ -1,0 +1,69 @@
+.container {
+	display: grid;
+	grid-template-areas:
+		"input input"
+		"cityButton userButton"
+		"result result";
+	gap: 5px;
+	overflow-x: visible;
+	grid-template-columns: 10rem 10rem;
+	border: 3px solid var(--light-main-color);
+	padding: 20px;
+	border-radius: 5px;
+	background: var(--main-gradient-to-top);
+	transition: all 0.2s ease-in-out;
+	box-shadow: 0px 2.5px 0px var(--main-shadow-1),
+		0px 5px 0px var(--main-shadow-2), 0px 7.5px 0px var(--main-shadow-3),
+		0px 10px 0px var(--main-shadow-4), 0px 12.5px 0px var(--main-shadow-5);
+
+	&:hover {
+		box-shadow: 0px 5px 0px var(--main-shadow-1),
+			0px 10px 0px var(--main-shadow-2), 0px 15px 0px var(--main-shadow-3),
+			0px 20px 0px var(--main-shadow-4), 0px 25px 0px var(--main-shadow-5);
+	}
+}
+.input {
+	grid-area: input;
+	height: 2em;
+	border: none;
+	border-bottom: 2px solid var(--disabled-color);
+	transition: all 0.2s ease-in-out;
+	font-size: 1em;
+	font-weight: 500;
+	caret-color: var(--main-color);
+	color: var(--main-color);
+	border-radius: 5px;
+	z-index: 2;
+
+	&:focus {
+		border: none;
+		outline: none;
+		border-bottom: 2px solid var(--main-color);
+	}
+
+	&:focus ~ .inputLabel,
+	&:not(:placeholder-shown) ~ .inputLabel {
+		color: var(--main-color);
+	}
+	&:not(:placeholder-shown) {
+		border: none;
+		outline: none;
+		border-bottom: 2px solid var(--main-color);
+	}
+}
+.inputLabel {
+	position: absolute;
+	color: var(--disabled-color);
+	font-size: 1em;
+	font-weight: 500;
+	z-index: 3;
+	transition: color 0.2s ease-in-out;
+}
+.placeholderBox {
+	border-radius: 5px;
+	position: absolute;
+	width: 4em;
+	height: 2em;
+	background-color: white;
+	z-index: 1;
+}

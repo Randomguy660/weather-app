@@ -5,6 +5,7 @@ body {
 	margin: 0;
 	padding: 0;
 	height: 100vh;
+	background: var(--background-radial-gradient);
 }
 * {
 	font-family: "IBM Plex Mono", monospace;
@@ -38,4 +39,9 @@ body {
 	--accent-shadow-3: hsla(151, 100%, 50%, 0.3);
 	--accent-shadow-4: hsla(151, 100%, 50%, 0.2);
 	--accent-shadow-5: hsla(151, 100%, 50%, 0.1);
+	--background-radial-gradient: radial-gradient(
+		circle,
+		rgba(40, 40, 40, 1) 0%,
+		rgba(20, 20, 20, 1) 100%
+	);
 }

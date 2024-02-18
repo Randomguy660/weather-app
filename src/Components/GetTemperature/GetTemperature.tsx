@@ -2,6 +2,8 @@ import { RefObject, useRef, useState } from "react";
 import { Loading, GettingUserLocation, FetchingData } from "../Loading";
 import styles from "./GetTemperature.module.css";
 
+const API_KEY = "153d8e8daf729c54e2ea43c872dc3e5a";
+
 type getWeatherProps = {
 	lat: number;
 	long: number;
@@ -30,7 +32,7 @@ function GetTemperature({ inputRef }: GetTemperatureProps) {
 			setTemp(undefined);
 		} else {
 			const res = await fetch(
-				`https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=153d8e8daf729c54e2ea43c872dc3e5a`
+				`https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=${API_KEY}`
 			);
 			const cityData = await res.json();
 
@@ -92,7 +94,7 @@ function GetTemperature({ inputRef }: GetTemperatureProps) {
 	const getWeather = async ({ lat, long, cityData }: getWeatherProps) => {
 		setFetchingData(true);
 		const res = await fetch(
-			`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=153d8e8daf729c54e2ea43c872dc3e5a&units=metric`
+			`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=${API_KEY}&units=metric`
 		);
 		const weatherData = await res.json();
 		setTemp(weatherData.main.temp);

@@ -5,10 +5,13 @@
 		"cityButton userButton"
 		"result result";
 	gap: 5px;
+	place-content: center;
 	overflow-x: visible;
 	grid-template-columns: 10rem 10rem;
 	border: 3px solid var(--light-main-color);
 	padding: 20px;
+	margin-left: 5%;
+	width: 80%;
 	border-radius: 5px;
 	background: var(--main-gradient-to-top);
 	transition: all 0.2s ease-in-out;
@@ -48,7 +51,7 @@
 	&:not(:placeholder-shown) {
 		border: none;
 		outline: none;
-		border-bottom: 2px solid var(--main-color);
+		border-bottom: 2px solid var(--dark-main-color);
 	}
 }
 .inputLabel {
@@ -66,4 +69,9 @@
 	height: 2em;
 	background-color: white;
 	z-index: 1;
+}
+.title {
+	text-align: center;
+	font-size: 2.5em;
+	font-weight: 500;
 }

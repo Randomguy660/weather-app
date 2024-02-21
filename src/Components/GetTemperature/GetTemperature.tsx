@@ -1,13 +1,15 @@
-import { RefObject, useRef, useState } from "react";
+import { RefObject, useEffect, useRef, useState } from "react";
 import { Loading, GettingUserLocation, FetchingData } from "../Loading";
+import { useGetCoords } from "../../Hooks/useGetCoords";
+
 import styles from "./GetTemperature.module.css";
 
 const API_KEY = "153d8e8daf729c54e2ea43c872dc3e5a";
 
-type getWeatherProps = {
+type getTempProps = {
 	lat: number;
 	long: number;
-	cityData?: any;
+	cityName?: string;
 };
 
 type GetTemperatureProps = {
@@ -15,39 +17,51 @@ type GetTemperatureProps = {
 };
 
 function GetTemperature({ inputRef }: GetTemperatureProps) {
-	const [geoCoding, setGeoCoding] = useState<boolean>(false);
 	const [gettingUserLocation, setGettingUserLocation] =
 		useState<boolean>(false);
 	const [fetchingData, setFetchingData] = useState<boolean>(false);
 	const [temp, setTemp] = useState<number>();
 	const [errorMsg, setErrorMsg] = useState<string>();
+
 	const fullCityName = useRef<string>();
+	const [_, setCoordsData] = useState<[number, number, string]>();
 
-	const getCityCoords = async () => {
-		setGeoCoding(true);
-		const city = inputRef.current?.value;
+	const [fullData, GetCityCoords, geocoding, error] = useGetCoords();
 
-		if (city == "") {
-			setErrorMsg("Please enter a city name.");
-			setTemp(undefined);
-		} else {
-			const res = await fetch(
-				`https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=${API_KEY}`
-			);
-			const cityData = await res.json();
-
-			if (cityData[0] != undefined) {
-				getWeather({
-					lat: cityData[0].lat,
-					long: cityData[0].lon,
-					cityData: cityData,
-				});
-			} else {
+	useEffect(() => {
+		switch (error) {
+			case "noCity": {
+				setErrorMsg("Please enter a city.");
+				break;
+			}
+			case "invalidCity": {
 				setErrorMsg("Invalid city.");
-				setTemp(undefined);
+				break;
+			}
+			case "noError": {
+				setErrorMsg("");
+				break;
 			}
 		}
-		setGeoCoding(false);
+	}, [error]);
+
+	useEffect(() => {
+		setCoordsData(fullData);
+
+		if (fullData != undefined) {
+			const getTempParams: getTempProps = {
+				lat: fullData[0],
+				long: fullData[1],
+				cityName: fullData[2],
+			};
+			getTemp(getTempParams);
+		}
+	}, [fullData]);
+
+	const getCityCoords = () => {
+		if (inputRef.current) {
+			GetCityCoords(inputRef.current?.value);
+		}
 	};
 
 	const getUserCoords = () => {
@@ -58,7 +72,7 @@ function GetTemperature({ inputRef }: GetTemperatureProps) {
 					//? Location successfully found
 					const lat = pos.coords.latitude;
 					const long = pos.coords.longitude;
-					getWeather({ lat: lat, long: long });
+					getTemp({ lat: lat, long: long });
 				},
 				(err) => {
 					//? Error in finding location
@@ -91,7 +105,7 @@ function GetTemperature({ inputRef }: GetTemperatureProps) {
 		setGettingUserLocation(false);
 	};
 
-	const getWeather = async ({ lat, long, cityData }: getWeatherProps) => {
+	const getTemp = async ({ lat, long, cityName }: getTempProps) => {
 		setFetchingData(true);
 		const res = await fetch(
 			`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=${API_KEY}&units=metric`
@@ -99,8 +113,8 @@ function GetTemperature({ inputRef }: GetTemperatureProps) {
 		const weatherData = await res.json();
 		setTemp(weatherData.main.temp);
 		setErrorMsg("Temperature successfully found.");
-		cityData
-			? (fullCityName.current = cityData[0].name)
+		cityName != undefined
+			? (fullCityName.current = cityName)
 			: (fullCityName.current = weatherData.name);
 		setFetchingData(false);
 	};
@@ -118,7 +132,7 @@ function GetTemperature({ inputRef }: GetTemperatureProps) {
 				Get My Temp
 			</button>
 			<div className={styles["temp-text"]}>
-				{geoCoding ? (
+				{geocoding ? (
 					<Loading />
 				) : gettingUserLocation ? (
 					<GettingUserLocation />

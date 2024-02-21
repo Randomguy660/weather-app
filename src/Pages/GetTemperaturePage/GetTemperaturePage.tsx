@@ -1,14 +1,14 @@
 import { useRef } from "react";
-import GetTemperature from "../GetTemperature/GetTemperature";
-import styles from "./WeatherApp.module.css";
-import { motion, useAnimate } from "framer-motion";
+import GetTemperature from "../../Components/GetTemperature/GetTemperature";
+import styles from "./GetTemperaturePage.module.css";
+import { Variants, motion, useAnimate } from "framer-motion";
 
-function WeatherApp() {
+function GetTemperaturePage() {
 	const cityInput = useRef<HTMLInputElement>(null);
 	const [scope, animateText] = useAnimate();
 
 	const TITLE = "Enter City Name";
-	const staggerTime = 0.05;
+	const TITLESTAGGERTIME = 0.05;
 
 	const textFocus = async () => {
 		if (cityInput.current?.value == "") {
@@ -55,22 +55,25 @@ function WeatherApp() {
 		}
 	};
 
-	const titleVariants = {
+	const titleVariants: Variants = {
 		start: {
 			y: 0,
 			color: "var(--main-color)",
+			textShadow: "0px 0px 5px var(--main-shadow-full)",
 		},
 		end: {
 			y: -10,
 			color: "var(--accent-color)",
+			textShadow: "0px 0px 5px var(--accent-shadow-full)",
 		},
 	};
 
 	return (
 		<>
+			{/* TITLE */}
 			<motion.div
 				transition={{
-					staggerChildren: staggerTime,
+					staggerChildren: TITLESTAGGERTIME,
 				}}
 				initial="start"
 				animate="end"
@@ -81,6 +84,7 @@ function WeatherApp() {
 						key={index}>
 						{word.split("").map((char, index) => (
 							<motion.span
+								className={styles["title-letter"]}
 								variants={titleVariants}
 								transition={{
 									duration: 0.8,
@@ -101,6 +105,7 @@ function WeatherApp() {
 					</motion.span>
 				))}
 			</motion.div>
+			{/* Container for the rest */}
 			<motion.div ref={scope} className={styles.container} layout>
 				<input
 					onFocus={() => textFocus()}
@@ -129,4 +134,4 @@ function WeatherApp() {
 		</>
 	);
 }
-export default WeatherApp;
+export default GetTemperaturePage;

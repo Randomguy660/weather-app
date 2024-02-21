@@ -34,14 +34,17 @@ body {
 	--main-shadow-3: hsla(209, 100%, 50%, 0.3);
 	--main-shadow-4: hsla(209, 100%, 50%, 0.2);
 	--main-shadow-5: hsla(209, 100%, 50%, 0.1);
+	--main-shadow-full: hsla(209, 100%, 50%, 1);
 	--accent-shadow-1: hsla(151, 100%, 50%, 0.5);
 	--accent-shadow-2: hsla(151, 100%, 50%, 0.4);
 	--accent-shadow-3: hsla(151, 100%, 50%, 0.3);
 	--accent-shadow-4: hsla(151, 100%, 50%, 0.2);
 	--accent-shadow-5: hsla(151, 100%, 50%, 0.1);
+	--accent-shadow-full: hsla(151, 100%, 50%, 1);
 	--background-radial-gradient: radial-gradient(
 		circle,
 		rgba(40, 40, 40, 1) 0%,
 		rgba(20, 20, 20, 1) 100%
 	);
+	--dark-shadow-1: hsl(0, 0%, 30%);
 }

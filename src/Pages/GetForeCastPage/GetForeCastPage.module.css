@@ -1,0 +1,61 @@
+.container {
+	height: 100vh;
+	width: 100vw;
+	display: grid;
+	grid-template-areas:
+		". input ."
+		"forecast forecast forecast";
+	grid-template-rows: 1fr 5fr;
+}
+
+.input-container {
+	grid-area: input;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.forecast-display {
+	grid-area: forecast;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.footer {
+	position: fixed;
+	width: 100%;
+	background: linear-gradient(to right, purple, white);
+	bottom: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	& div {
+		text-align: center;
+		font-size: 2em;
+		font-weight: 500;
+		background: var(--main-to-accent-to-main-extended-linear-gradient);
+		background-size: 200%;
+		background-clip: text;
+		color: transparent;
+		animation: text-anim 3s ease-in-out infinite;
+	}
+}
+
+@keyframes text-anim {
+	10% {
+		background-position-x: 0%;
+	}
+	40% {
+		background-position-x: 100%;
+	}
+	60% {
+		background-position-x: 100%;
+	}
+	90% {
+		background-position-x: 0%;
+	}
+}

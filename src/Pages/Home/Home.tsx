@@ -25,7 +25,7 @@ function Home() {
 				UNDER CONSTRUCTION
 			</div>
 			<a href="./#/temperature">Temperature</a>
-			<a href="./#/weather">Weather</a>
+			<a href="./#/weather">Forecast</a>
 		</div>
 	);
 }

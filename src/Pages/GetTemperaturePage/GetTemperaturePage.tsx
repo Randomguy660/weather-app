@@ -2,6 +2,8 @@ import { useRef } from "react";
 import GetTemperature from "../../Components/GetTemperature/GetTemperature";
 import styles from "./GetTemperaturePage.module.css";
 import { Variants, motion, useAnimate } from "framer-motion";
+import ReportProblem from "../../Components/Buttons/ReportProblem/ReportProblem";
+import HomeButton from "../../Components/Buttons/HomeButton/HomeButton";
 
 function GetTemperaturePage() {
 	const cityInput = useRef<HTMLInputElement>(null);
@@ -70,6 +72,16 @@ function GetTemperaturePage() {
 
 	return (
 		<>
+			<div
+				style={{
+					position: "absolute",
+					top: 0,
+					right: 0,
+					padding: "10px",
+				}}>
+				<HomeButton />
+			</div>
+			<ReportProblem />
 			{/* TITLE */}
 			<motion.div
 				transition={{

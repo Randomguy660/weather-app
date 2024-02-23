@@ -34,3 +34,10 @@
 		background-color: var(--dark-accent-color);
 	}
 }
+.footer {
+	position: fixed;
+	bottom: 0;
+	width: 100vw;
+	height: 200px;
+	background: var(--main-to-accent-linear-gradient);
+}

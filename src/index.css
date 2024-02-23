@@ -47,4 +47,15 @@ body {
 		rgba(20, 20, 20, 1) 100%
 	);
 	--dark-shadow-1: hsl(0, 0%, 30%);
+	--main-to-accent-linear-gradient: linear-gradient(
+		to right,
+		var(--main-color),
+		var(--accent-color)
+	);
+	--main-to-accent-to-main-extended-linear-gradient: linear-gradient(
+		to right,
+		var(--main-color),
+		var(--accent-color),
+		var(--main-color)
+	);
 }
